@@ -1,11 +1,30 @@
 import React from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Todo(props) {
+function Todo() {
+  const [user, setUser] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    axios
+      .get("https://www.flickr.com/services/api/flickr.photos.getRecent.html")
+      .then(function (response) {
+        setUser(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
   function users(data) {
-    let persons = { props }.props.user;
-    var person = persons.filter((use) => use.email === data.email);
+    console.log(user);
+    var person = user.filter((use) => use.email === data.email);
     {
-      person.length !== 0 ? console.log(person) : console.log("user not found");
+      person.length !== 0
+        ? navigate("/details")
+        : console.log("user not found");
     }
   }
 
@@ -17,7 +36,9 @@ function Todo(props) {
       email: email,
       password: password,
     };
-    users(data);
+    {
+      data.email !== "" && data.password !== "" && users(data);
+    }
 
     e.target.reset();
   }
@@ -46,7 +67,7 @@ function Todo(props) {
                     name="email"
                     type="email"
                     required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full p-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -65,7 +86,7 @@ function Todo(props) {
                     name="password"
                     type="password"
                     required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full p-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>

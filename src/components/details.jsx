@@ -1,19 +1,12 @@
-// import React from "react";
-
-// function details(props) {
-//   let allUser = { props }.props.prop;
-//   console.log(allUser);
-//   console.log({ props }.props.prop);
-//   return (
-//     <>
-//       <h1>hello</h1>
-//       {/* <ul>
-//         {{ props }.props.prop.map((item) => (
-//           <li>{item}</li>
-//         ))}
-//       </ul> */}
-//     </>
-//   );
-// }
-
-// export default details;
+export default function getImageUrl(person) {
+  console.log(person);
+  return (
+    "https://live.staticflickr.com/" +
+    person.server +
+    "/" +
+    person.id +
+    "_" +
+    person.secret +
+    ".png"
+  );
+}
