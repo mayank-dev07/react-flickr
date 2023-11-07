@@ -1,8 +1,5 @@
 import React from "react";
 import axios from "axios";
-// import Nav from "./components/nav";
-// import Data from "./components/data";
-// import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -94,7 +91,7 @@ function App() {
         </div>
       </nav>
       <hr />
-      <div className="container mx-auto">
+      <div className="2xl:container 2xl:mx-auto">
         <div className="flex flex-wrap space-x-4 space-y-4">
           {images.map((img) => (
             <div>
@@ -103,19 +100,6 @@ function App() {
           ))}
         </div>
       </div>
-      {/* <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <React.Fragment>
-                <Nav />
-                <Data user={user} />
-              </React.Fragment>
-            }
-          />
-        </Routes>
-      </BrowserRouter> */}
     </>
   );
 }
