@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Avatar from "./components/Avatar";
 
 function App() {
   const [user, setUser] = useState("");
@@ -23,23 +24,6 @@ function App() {
   }, []);
 
   const images = { user }.user;
-
-  function Avatar(person) {
-    console.log(person);
-    return <img className="avatar" src={getImageUrl(person)} />;
-  }
-
-  function getImageUrl(person) {
-    return (
-      "https://live.staticflickr.com/" +
-      person.server +
-      "/" +
-      person.id +
-      "_" +
-      person.secret +
-      ".png"
-    );
-  }
 
   function submit(e) {
     e.preventDefault();
