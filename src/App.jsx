@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -15,6 +14,7 @@ function App() {
         },
       })
       .then(function (response) {
+        console.log(response);
         setUser(response.data.photos.photo);
       })
       .catch(function (error) {
@@ -24,7 +24,7 @@ function App() {
 
   const images = { user }.user;
 
-  function Avatar({ person }) {
+  function Avatar(person) {
     console.log(person);
     return <img className="avatar" src={getImageUrl(person)} />;
   }
@@ -94,9 +94,11 @@ function App() {
       <div className="2xl:container 2xl:mx-auto">
         <div className="flex flex-wrap space-x-4 space-y-4">
           {images.map((img) => (
-            <div>
-              <Avatar person={img} />
-            </div>
+            <>
+              <div key={img}>
+                <Avatar person={img} />
+              </div>
+            </>
           ))}
         </div>
       </div>
